@@ -1,0 +1,242 @@
+$white: azure;
+$dark: #302d32;
+$accent: cadetblue;
+$warning: #b33c3c;
+$input-bar-bg: darkgrey;
+$border-radius: 1rem;
+
+
+:root {
+  font-size: large;
+}
+
+body {
+  font: large Avenir, Helvetica, Arial;
+  color: $dark;
+  padding: 10px;
+  height: calc(100vh - 20px);
+  margin: 0;
+}
+
+#settings-btn {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 2rem;
+  height: 2rem;
+}
+
+#settings {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+
+  width: 100vw;
+  height: 100vh;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+
+  > div {
+    width: 300px;
+    //height: 300px;
+    max-width: 100%;
+    max-height: 100%;
+    background-color: transparentize($color: $white, $amount: 0.1);
+    border-radius: $border-radius;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-content: center;
+    padding: 1rem;
+    pointer-events: all;
+    text-align: center;
+    > div {
+      display: flex;
+      input {flex-grow: 100;}
+    }
+  }
+
+}
+
+input, button {
+  border-radius: $border-radius;
+  padding: 0.5rem;
+  border: none;
+}
+
+.users {
+  position: absolute;
+  h4 { margin: 0; }
+  button {
+    min-width: 2rem;
+    height: 2rem;
+    transition: width 0.3s ease-in-out;
+
+    span {
+      width: 0px;
+      display: inline-block;
+      transition: all 0.3s;
+      opacity: 0;
+    }
+
+    &:hover span {
+      width: auto;
+      transition: all 0.3s;
+      opacity: 1;
+    }
+
+    &.me {
+      border: 2px solid red;
+    }
+  }
+}
+
+#new-messages {
+  position: absolute;
+  width: 100%;
+  bottom: 3rem;
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  justify-content: end;
+
+  color: $white;
+
+  button {
+    width: 2rem;
+    height: 2rem;
+  }
+}
+
+#chat {
+  margin: auto;
+
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  align-items: stretch;
+
+  height: 100%;
+  max-width: 960px;
+  overflow: hidden;
+  border-radius: $border-radius;
+
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 20px;
+
+    background-color: $dark;
+
+    flex-grow: 100;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    overflow-y: auto;
+
+    :first-child {
+      margin-top: 1rem;
+    }
+
+    .name {
+      color: $white;
+      font-size: 0.6rem;
+      &.sent { align-self: flex-end; }
+      &.warning { align-self: center; }
+    }
+
+    .time {
+      color: $white;
+      font-size: 0.6rem;
+      margin-top: -0.25rem;
+      margin-bottom: 0.2rem;
+      height: 0px;
+      opacity: 0;
+      transition: all 0.3s ease-in;
+      &.sent { align-self: flex-end; }
+      &.warning { align-self: center; }
+    }
+  }
+}
+
+#chat li {
+  &:hover + span { height: 0.8rem; opacity: 1; }
+  width: fit-content;
+  max-width: 70%;
+  word-break: break-word;
+
+  border-radius: $border-radius;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+
+  margin-block-end: 0.25rem;
+  // &:not(:last-of-type) { margin-block-end: 0.25rem; }
+
+  &:not(.sent) {
+    border-bottom-left-radius: 1px;
+    background-color: $white;
+  }
+
+  &.warning {
+    align-self: center;
+    padding: 0.5rem 1rem;
+    border-radius: $border-radius;
+    background-color: $warning;
+    color: $white;
+  }
+
+  &.sent {
+    background-color: $accent;
+    color: $white;
+    border-bottom-right-radius: 1px;
+    align-self: flex-end;
+  }
+
+  &.emojis {
+    font-size: 2rem;
+    background: none;
+    padding: 0px;
+    margin-bottom: -0.25rem;
+    margin-top: 0;
+  }
+}
+
+@keyframes plunk {
+  from {
+    background-color: $warning;
+  }
+  to {
+    background-color: $white;
+  }
+}
+
+#chat form {
+  background: $input-bar-bg;
+  min-height: 1.85rem;
+  padding: 0.25rem;
+  display: flex;
+  align-content: space-between;
+
+  input {
+    flex-grow: 10;
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+    background-color: $white;
+    &.error {
+      animation: plunk 0.9s ease-in-out;
+      animation-iteration-count: 1;
+    }
+  }
+
+  button {
+    flex-grow: 0;
+    background: $accent; //rgb(130, 224, 255);
+    i { color: $white; }
+  }
+}

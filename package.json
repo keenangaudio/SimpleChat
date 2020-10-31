@@ -1,0 +1,14 @@
+{
+  "name": "seng513_assignment3",
+  "version": "0.0.1",
+  "description": "simple chat app",
+  "scripts": {
+    "sass": "node-sass --watch assets/src -o assets/build"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "node-sass": "^4.14.1",
+    "socket.io": "^2.3.0",
+    "uuid": "^8.3.1"
+  }
+}

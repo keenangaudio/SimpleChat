@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Socket.IO chat</title>
+    <link href="assets/main.css?2020-10-30.5" rel="stylesheet" type="text/css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  </head>
+  <body>
+    <div id="chat">
+      <button id="settings-btn">
+        <i class="fas fa-cog"></i>
+      </button>
+      <div class="users"></div>
+      <ul id="messages"></ul>
+      <div id="new-messages">
+        <button id="scroll-to-bottom">
+          <i class="fas fa-arrow-down"></i>
+        </button>
+        <span>New Messages</span>
+      </div>
+      <form>
+        <input id="m" autocomplete="off" />
+        <button>
+          <i class="far fa-paper-plane"></i>
+        </button>
+      </form>
+    </div>
+    <div id="settings">
+      <div>
+        Change your Name?
+        <div>
+          <b>Name</b>
+          <input id="my-name" type="text" />
+        </div>
+        <div>
+          <b>Colour</b>
+          <input id="my-colour" type="color" />
+        </div>
+        <button id="change-name">Submit</button>
+      </div>
+    </div>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="assets/script.js?2020-10-30.5"></script>
+    <script src="https://kit.fontawesome.com/8a137df430.js" crossorigin="anonymous"></script>
+  </body>
+</html>
