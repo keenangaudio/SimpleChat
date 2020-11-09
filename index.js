@@ -14,7 +14,7 @@ class User {
   constructor(id, name, colour) {
     this.id = id;
     this.colour = (colour !== "undefined" && colour) || 'azure';
-    this.name = (name !== "undefined" && name) || `User ${users.size ?? 0}`;
+    this.name = (name !== "undefined" && name) || `User ${users.size || 0}`;
   }
 }
 
